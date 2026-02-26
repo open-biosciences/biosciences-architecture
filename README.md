@@ -2,7 +2,14 @@
 
 System architecture documents, ADRs, and governance specifications for the [Open Biosciences](https://github.com/open-biosciences) platform.
 
-Owned by the **Platform Architect** agent. This is a root provider repository -- all other repos in the platform read architecture decisions and schemas from here.
+Owned by the **Platform Architect** agent (Agent 2). This is the root provider repository — no upstream dependencies. All 10 other repos in the platform read architecture decisions and schemas from here.
+
+## Migration Status
+
+| Wave | Status | Completed |
+|------|--------|-----------|
+| Wave 1 — Foundation | ✅ Complete | 2026-02-25 (AGE-149) |
+| Wave 1-ext — SpecKit artifacts | ✅ Complete | 2026-02-26 (AGE-183) |
 
 ## Contents
 
@@ -21,11 +28,11 @@ Six accepted ADRs in `docs/adr/accepted/`:
 
 ### Platform Engineering Rationale
 
-`docs/platform-engineering-rationale.md` -- team topology, design rationale, and the 9-agent model that governs the platform.
+`docs/platform-engineering-rationale.md` — team topology, design rationale, and the 9-agent model that governs the platform.
 
 ## SpecKit Artifacts (Migrated from `lifesciences-research`)
 
-The following directories were migrated from the `lifesciences-research` predecessor repository as archival architectural artifacts. Files are copied **as-is** — internal cross-references to `lifesciences_mcp` package paths are intentionally preserved.
+The following directories were migrated from the `lifesciences-research` predecessor repository as archival architectural artifacts per AGE-183. Files are copied **as-is** — internal cross-references to `lifesciences_mcp` package paths are intentionally preserved to maintain the audit trail.
 
 ### Directories
 
@@ -42,7 +49,7 @@ The following directories were migrated from the `lifesciences-research` predece
 | `docs/speckit-standard-prompt.md` | v1 (legacy) — preserved for history/audit trail |
 | `docs/speckit-scaffold-process-timeline-v2.md` | v2 — Mermaid workflow timeline, current vs optimized scaffolding process |
 
-**Provenance:** All files were created in `lifesciences-research` (predecessor repo at `/home/donbr/graphiti-org/lifesciences-research/`) and migrated here as archival artifacts. These are governance and specification artifacts owned by the Platform Architect; they live here alongside the ADRs they reference (ADR-001, ADR-003, ADR-006).
+**Provenance:** All SpecKit artifacts were created in the `lifesciences-research` predecessor repository and migrated here because they are architectural governance artifacts owned by the Platform Architect. They live here alongside the ADRs they reference (ADR-001, ADR-003, ADR-006).
 
 ## Usage
 
@@ -55,15 +62,15 @@ This repo contains documentation only (no runnable code). Reference these ADRs w
 
 ## Dependencies
 
-None. This is a foundational repo with no upstream dependencies.
+None. This is the foundational root provider repo with no upstream dependencies.
 
 **Downstream consumers:** All 10 other repos in the Open Biosciences platform read ADRs and schemas from this repository.
 
 ## Related Repos
 
-- [biosciences-skills](https://github.com/open-biosciences/biosciences-skills) -- implements ADR-002 and ADR-003
-- [biosciences-mcp](https://github.com/open-biosciences/biosciences-mcp) -- implements ADR-001 and ADR-004
-- [biosciences-program](https://github.com/open-biosciences/biosciences-program) -- migration coordination
+- [biosciences-skills](https://github.com/open-biosciences/biosciences-skills) — implements ADR-002 and ADR-003
+- [biosciences-mcp](https://github.com/open-biosciences/biosciences-mcp) — implements ADR-001 and ADR-004
+- [biosciences-program](https://github.com/open-biosciences/biosciences-program) — migration coordination
 
 ## License
 
