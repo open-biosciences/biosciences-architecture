@@ -60,7 +60,79 @@ biosciences-architecture/
 - **Error Envelope**: All errors must use `ErrorEnvelope` with recovery hints
 - **Error Code Registry**: 6 standard error codes (§9)
 
+## Subsystem Context
+
+The `ra_orchestrators/` subdirectory contains an independent orchestration framework with its own
+444-line CLAUDE.md. Read `ra_orchestrators/CLAUDE.md` before working with that subsystem.
+
+## SpecKit Commands (ADR-003)
+
+The canonical SpecKit SDLC commands live in `.claude/commands/` in this repo:
+
+| Command | File | Purpose |
+|---------|------|---------|
+| `/speckit.constitution` | `speckit.constitution.md` | Establish project principles (one-time) |
+| `/speckit.specify` | `speckit.specify.md` | Create feature specification |
+| `/speckit.clarify` | `speckit.clarify.md` | Surface underspecified areas |
+| `/speckit.plan` | `speckit.plan.md` | Create implementation plan |
+| `/speckit.tasks` | `speckit.tasks.md` | Generate actionable tasks |
+| `/speckit.analyze` | `speckit.analyze.md` | Cross-artifact consistency check |
+| `/speckit.implement` | `speckit.implement.md` | Execute bounded implementation |
+| `/speckit.checklist` | `speckit.checklist.md` | Pre-flight checklist |
+| `/speckit.taskstoissues` | `speckit.taskstoissues.md` | Convert tasks to GitHub issues |
+
+SpecKit commands are governance artifacts — they define the SDLC process for the whole platform
+and belong alongside the ADRs that mandate them (ADR-003). Domain execution skills remain in
+`biosciences-skills/.claude/skills/`.
+
 ## Pre-Migration Location
 
 Until Wave 1 migration completes, these documents live at:
 `/home/donbr/graphiti-org/lifesciences-research/docs/adr/accepted/`
+
+## SpecKit Specification Artifacts
+
+Two directories from the `lifesciences-research` predecessor project have been migrated here as archival architectural artifacts. They are copied **as-is** — internal references to `src/lifesciences_mcp/` and original file paths are intentionally preserved to maintain the audit trail.
+
+### `specs/` — MCP Server Specifications
+
+| Property | Value |
+|----------|-------|
+| Source | `lifesciences-research/specs/` |
+| Contents | 13 MCP server specification directories (`001-hgnc-mcp-server` through `013-clinicaltrials-mcp-server`) |
+| Files | 143 files |
+| Format | Each directory: spec.md, plan.md, tasks.md, data-model.md, research.md, quickstart.md, contracts/, checklists/, compliance analyses |
+| Created by | `/scaffold-fastmcp-v2` + `/speckit.*` commands |
+| ADR refs | ADR-001 (Agentic-First), ADR-003 (SpecKit SDLC), ADR-006 (Single Writer Package) |
+
+These represent the complete design record for all 12 life sciences API integrations. Implementations live in `biosciences-mcp/src/biosciences_mcp/`.
+
+> **Note:** Internal cross-references in spec files point to `src/lifesciences_mcp/` (original package name). The implementation has since been renamed to `biosciences_mcp` in `biosciences-mcp/`. References are not updated here to preserve specification integrity.
+
+### `.specify/` — SpecKit Framework Configuration
+
+| Property | Value |
+|----------|-------|
+| Source | `lifesciences-research/.specify/` |
+| Contents | Constitution, templates, bash scripts |
+| Files | 11 files |
+| Subdirectories | `memory/` (constitution.md), `templates/` (5 markdown templates), `scripts/bash/` (5 automation scripts) |
+
+The `.specify/` directory is the SpecKit process tooling used to generate the `specs/` artifacts. Key files:
+- `memory/constitution.md` — 6 core principles, forbidden/required patterns, governance process
+- `templates/spec-template.md`, `plan-template.md`, `tasks-template.md`, etc. — scaffolding templates
+- `scripts/bash/create-new-feature.sh`, `update-agent-context.sh` — automation
+
+> **Note:** Scripts reference `lifesciences-research`-era paths. They are preserved as-is for reference — update paths before running in the new workspace.
+
+### SpecKit Process Documents (in `docs/`)
+
+| File | Description | Original Path |
+|------|-------------|---------------|
+| `docs/speckit-standard-prompt-v2.md` | v2 (current) — ADR compliance table, 13 API canonical prompts, tier reference, anti-patterns | `lifesciences-research/docs/speckit-standard-prompt-v2.md` |
+| `docs/speckit-standard-prompt.md` | v1 (legacy) — preserved for history/audit trail | `lifesciences-research/docs/speckit-standard-prompt.md` |
+| `docs/speckit-scaffold-process-timeline-v2.md` | v2 — Mermaid workflow timeline, current vs optimized scaffolding process | `lifesciences-research/docs/speckit-scaffold-process-timeline-v2.md` |
+
+These are **architectural governance documents** — they define how the SpecKit SDLC process maps to ADRs and how to produce specification artifacts. They are owned by the Platform Architect, not the Research Workflows Engineer, and live here alongside the ADRs they reference.
+
+> **Migration note:** These docs were originally assigned to `biosciences-research` in the Wave 4 migration tracker. That assignment was incorrect — they are process/architecture documents, not research outputs. The migration tracker has been updated accordingly.
