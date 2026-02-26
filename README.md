@@ -23,6 +23,27 @@ Six accepted ADRs in `docs/adr/accepted/`:
 
 `docs/platform-engineering-rationale.md` -- team topology, design rationale, and the 9-agent model that governs the platform.
 
+## SpecKit Artifacts (Migrated from `lifesciences-research`)
+
+The following directories were migrated from the `lifesciences-research` predecessor repository as archival architectural artifacts. Files are copied **as-is** — internal cross-references to `lifesciences_mcp` package paths are intentionally preserved.
+
+### Directories
+
+| Directory | Description |
+|-----------|-------------|
+| `specs/` | 13 MCP server specification directories (`001-hgnc-mcp-server` through `013-clinicaltrials-mcp-server`) — the complete design record for all life sciences API integrations, produced by the SpecKit SDLC process. 143 files total. |
+| `.specify/` | SpecKit framework configuration — project constitution (`memory/constitution.md`), 5 markdown templates, and 5 bash automation scripts. 11 files total. |
+
+### SpecKit Process Documents (`docs/`)
+
+| File | Description |
+|------|-------------|
+| `docs/speckit-standard-prompt-v2.md` | v2 (current) — ADR compliance table, 13 API canonical prompts, tier reference, anti-patterns |
+| `docs/speckit-standard-prompt.md` | v1 (legacy) — preserved for history/audit trail |
+| `docs/speckit-scaffold-process-timeline-v2.md` | v2 — Mermaid workflow timeline, current vs optimized scaffolding process |
+
+**Provenance:** All files were created in `lifesciences-research` (predecessor repo at `/home/donbr/graphiti-org/lifesciences-research/`) and migrated here as archival artifacts. These are governance and specification artifacts owned by the Platform Architect; they live here alongside the ADRs they reference (ADR-001, ADR-003, ADR-006).
+
 ## Usage
 
 This repo contains documentation only (no runnable code). Reference these ADRs when:
