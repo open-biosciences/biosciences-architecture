@@ -1,8 +1,8 @@
 # biosciences-architecture
 
-System architecture documents and governance specifications for the [Open Biosciences](https://github.com/open-biosciences) platform.
+Repository Analyzer Framework for the [Open Biosciences](https://github.com/open-biosciences) platform.
 
-Owned by the **Platform Architect** agent (Agent 2). This is the root provider repository — no upstream dependencies.
+Owned by the **Platform Architect** agent (Agent 2). Governance artifacts (ADRs, specs, SpecKit commands) have been consolidated into [biosciences-program](https://github.com/open-biosciences/biosciences-program) per AGE-184. This repo now contains the Repository Analyzer Framework.
 
 ## Migration Status
 
@@ -46,9 +46,9 @@ Reference ADRs (now in `biosciences-program`) when:
 
 ## Dependencies
 
-None. This is the foundational root provider repo with no upstream dependencies.
+None. This repo has no upstream dependencies.
 
-**Downstream consumers:** All 11 other repos in the Open Biosciences platform read ADRs from `biosciences-program`.
+**Downstream consumers:** All repos in the Open Biosciences platform read ADRs from `biosciences-program`.
 
 ## Related Repos
 
